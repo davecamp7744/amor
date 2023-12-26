@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra galeria</title>
+    <link rel="shortcut icon" href="../img/img1.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        #carrusel-container {
+            width: 400px; /* Ancho del carrusel */
+            height: auto; /* Alto del carrusel */
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            
+        }
+
+        #carrusel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            align-items: center;
+        }
+
+        .item {
+            width: 400px; /* Ancho de cada elemento del carrusel */
+            flex: 0 0 auto;
+        }
+
+        img {
+            width: 50% ;
+            height: auto;
+        }
+
+        #anterior, #siguiente {
+            position: absolute;
+            top: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            padding: 10px;
+        }
+
+        #anterior {
+            left: 10px; /* Posiciona el botón "anterior" en el lado izquierdo */
+        }
+
+        #siguiente {
+            right: 10px; /* Posiciona el botón "siguiente" en el lado derecho */
+        }
+        h1{
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #f2f2f2;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Videos para ti mi princesa 🩷</h1>
+    <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="cartas.html">Cartas</a>
+        <a href="arquitectura.html">Arquitecta</a>
+        <a href="fotos.html">Fotos</a>
+        <a href="galeria.html">Videos</a>
+    </nav>
+    <div id="carrusel-container">
+        <div id="carrusel">
+            <!-- Imágenes y videos se agregarán aquí dinámicamente con JavaScript -->
+        </div>
+        <button id="anterior">&#10094;</button>
+        <button id="siguiente">&#10095;</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const carrusel = document.getElementById("carrusel");
+            const anteriorBtn = document.getElementById("anterior");
+            const siguienteBtn = document.getElementById("siguiente");
+
+            let slideIndex = 0;
+
+            // Puedes agregar más imágenes y videos siguiendo el formato
+            const contenidoCarrusel = [
+
+                { tipo: "video", src: "../videos/v1.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v2.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v3.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v4.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v5.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v6.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v7.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v8.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v9.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v10.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v11.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v12.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v13.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v14.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v15.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/v16.mp4", alt: "Video 5" },
+                { tipo: "video", src: "../videos/video1.mp4", alt: "Video 1" },
+                { tipo: "video", src: "../videos/video2.mp4", alt: "Video 2" },
+                { tipo: "video", src: "../videos/video3.mp4", alt: "Video 3" },
+                { tipo: "video", src: "../videos/video4.mp4", alt: "Video 4" },
+                { tipo: "video", src: "../videos/video5.mp4", alt: "Video 5" },
+
+            ];
+
+            contenidoCarrusel.forEach(item => {
+                const elemento = document.createElement("div");
+                if (item.tipo === "img") {
+                    const contenido = document.createElement("img");
+                    contenido.setAttribute("src", item.src);
+                    contenido.alt = item.alt;
+                    contenido.classList.add("item");
+                    elemento.appendChild(contenido);
+                } else if (item.tipo === "video") {
+                    const contenido = document.createElement("video");
+                    contenido.setAttribute("src", item.src);
+                    contenido.alt = item.alt;
+                    contenido.controls = true; // Agrega controles de reproducción
+                    contenido.classList.add("item");
+                    elemento.appendChild(contenido);
+                }
+                carrusel.appendChild(elemento);
+            });
+
+            function mostrarSlide(index) {
+                carrusel.style.transform = `translateX(${-index * 400}px)`;
+            }
+
+            function avanzar() {
+                if (slideIndex < contenidoCarrusel.length - 1) {
+                    slideIndex++;
+                } else {
+                    slideIndex = 0;
+                }
+                mostrarSlide(slideIndex);
+            }
+
+            function retroceder() {
+                if (slideIndex > 0) {
+                    slideIndex--;
+                } else {
+                    slideIndex = contenidoCarrusel.length - 1;
+                }
+                mostrarSlide(slideIndex);
+            }
+
+            anteriorBtn.addEventListener("click", retroceder);
+            siguienteBtn.addEventListener("click", avanzar);
+        });
+    </script>
+
+</body>
+</html>
