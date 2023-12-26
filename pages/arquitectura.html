@@ -6,39 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para mi futura arquitecta</title>
     <style>
-        body{
-            background: url(../img/fondoarqui.jpg);
-            background-size: cover;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            color: #fff;
-        }
-        main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-/*             height: 100vh; */
-            margin: 0;
-        }
-
-        button {
-            padding: 15px 25px;
-            margin: 10px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
 
         button:hover {
             background-color: #45a049;
             transform: scale(1.1);
         }
 
-        /* Estilo de la ventana modal */
         .modal {
             display: none;
             position: fixed;
@@ -51,38 +24,42 @@
             align-items: center;
         }
 
-        .modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            width: auto;
-        }
-        a{
+        a {
             text-decoration: none;
             color: tomato;
         }
+
         .close {
             position: absolute;
             top: 10px;
             right: 10px;
             cursor: pointer;
         }
-        .parrafo{
-            display: flex;
-            /* justify-content: center; */
-            align-items: center;
-            flex-direction: row;
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
         }
-        .icono{
-            margin: 5px;
+
+        body {
+            background: url(../img/fondoarqui.jpg);
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto auto 1fr; /* Header, Navigation, Main Content */
+            grid-template-columns: 1fr; /* Single column layout */
+            min-height: 100vh;
         }
-        h1, h2{
-            text-align: center;
-        }
+
         nav {
             background-color: #333;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive navigation */
+            justify-content: space-around;
             align-items: center;
             padding: 10px;
         }
@@ -94,9 +71,47 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
+        h1, h2 {
+            text-align: center;
+            font-size: 1.5em; /* Adjust font size for smaller screens */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .parrafo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .icono {
+            margin: 5px;
+        }
+
+        main {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -122,129 +137,149 @@
         <button onclick="openModal('modal3')">Geometria en la arquitectura</button>
         <button onclick="openModal('modal4')">Matematicas para arcquitectura</button>
         <button onclick="openModal('modal5')">Sistemas ambientales y sistemas estructurales</button>
-        
+
         <!-- Ventanas Modales -->
         <div id="modal1" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal1')">&times;</span>
-            <div class="parrafo">
-                <img class="icono" src="../img/videos.png" alt="">
-                <p><a target="_blank" href="https://www.youtube.com/playlist?list=PLvql7VK4q_5QuimJkXo1tROKNeqqAhc76">Lista de reproduccion teoria de la arquitectura</a></p>
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal1')">&times;</span>
+                <div class="parrafo">
+                    <img class="icono" src="../img/videos.png" alt="">
+                    <p><a target="_blank"
+                            href="https://www.youtube.com/playlist?list=PLvql7VK4q_5QuimJkXo1tROKNeqqAhc76">Lista de
+                            reproduccion teoria de la arquitectura</a></p>
                 </div>
                 <div class="parrafo">
                     <img class="icono" src="../img/sitio-web.png" alt="">
-                    <p><a target="_blank" href="https://coarins.com/estudiar-arquitectura/que-es-la-teoria-de-la-arquitectura/">Sitio web</a></p>
+                    <p><a target="_blank"
+                            href="https://coarins.com/estudiar-arquitectura/que-es-la-teoria-de-la-arquitectura/">Sitio
+                            web</a></p>
                 </div>
-        </div>
-    </div>
-
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal2')">&times;</span>
-            <div class="parrafo">
-                <img class="icono" src="../img/sitio-web.png" alt="">
-                <p>
-                    <a target="_blank" href="https://historia-biografia.com/historia-de-la-arquitectura/">Sitio web</a>
-                </p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/sitio-web.png" alt="">
-                <p>
-                    <a target="_blank" href="https://www.arqhys.com/contenidos/arquitectura-historia.html">Sitio web</a>
-                </p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/videos.png" alt="">
-                <p>
-                    <a target="_blank" href="https://www.youtube.com/playlist?list=PLqM4svTtMJPtc4Cewl4qJDrG-L7gbMx9F">Lista de reproduccion historia de la arquitectura</a>
-                </p>
             </div>
         </div>
-    </div>
 
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal3')">&times;</span>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p>
-                    <a target="_blank" href="../img/Geometria.pdf">Link de libro de geometria en la arquitectura</a>
-                </p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/videos.png" alt="">
-                <p>
-                    <a target="_blank" href="https://www.youtube.com/playlist?list=PLOhG_2QAPUaaxYhRbt604nLU_tPjHeoJn">Playlist geometria en la arquitectura</a>
-                </p>
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal2')">&times;</span>
+                <div class="parrafo">
+                    <img class="icono" src="../img/sitio-web.png" alt="">
+                    <p>
+                        <a target="_blank" href="https://historia-biografia.com/historia-de-la-arquitectura/">Sitio
+                            web</a>
+                    </p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/sitio-web.png" alt="">
+                    <p>
+                        <a target="_blank" href="https://www.arqhys.com/contenidos/arquitectura-historia.html">Sitio
+                            web</a>
+                    </p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/videos.png" alt="">
+                    <p>
+                        <a target="_blank"
+                            href="https://www.youtube.com/playlist?list=PLqM4svTtMJPtc4Cewl4qJDrG-L7gbMx9F">Lista de
+                            reproduccion historia de la arquitectura</a>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="modal4" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal4')">&times;</span>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p><a target="_blank" href="../img/matematicasparte1.pdf">Libro matematicas para arquitectura 1</a></p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p><a target="_blank" href="../img/matematicasparte2.pdf">Libro matematicas para arquitectura 2</a></p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p><a target="_blank" href="../img/matematicasaplicadas.pdf">Matematicas aplicadas para arquitectura</a></p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/videos.png" alt="">
-                <p><a target="_blank" href="https://youtube.com/playlist?list=PLpv6Rl2SgYAt3-ehIMnbOw1PMsvNOQ2I5&si=gqlbKMjfwyUELhrw">Playlist matematicas para arquitectura</a></p>
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal3')">&times;</span>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p>
+                        <a target="_blank" href="../img/Geometria.pdf">Link de libro de geometria en la arquitectura</a>
+                    </p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/videos.png" alt="">
+                    <p>
+                        <a target="_blank"
+                            href="https://www.youtube.com/playlist?list=PLOhG_2QAPUaaxYhRbt604nLU_tPjHeoJn">Playlist
+                            geometria en la arquitectura</a>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div id="modal5" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal5')">&times;</span>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p class="hidden"><a target="_blank" href="../img/matematicasedificacion.pdf">Libro de matematicas en la edificacion (sistemas ambientales)</a></p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p class="hidden"><a target="_blank" href="../img/arquitecturasustentable.pdf">Libro de arquitectura ambientales</a></p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p class="hidden"><a target="_blank" href="../img/sistemasestructurales.pdf">Libro de sistemas estructurales</a></p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p class="hidden"><a target="_blank" href="../img/sistemasestructural.pdf">Libro de temas basicos de sistemas estructurales</a></p>
-            </div>
-            <div class="parrafo">
-                <img class="icono" src="../img/pdf.png" alt="">
-                <p class="hidden"><a target="_blank" href="../img/sistemasestructuraledificios.pdf">Libro de sistemas estructurales en construcciones</a></p>
+
+        <div id="modal4" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal4')">&times;</span>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p><a target="_blank" href="../img/matematicasparte1.pdf">Libro matematicas para arquitectura 1</a>
+                    </p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p><a target="_blank" href="../img/matematicasparte2.pdf">Libro matematicas para arquitectura 2</a>
+                    </p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p><a target="_blank" href="../img/matematicasaplicadas.pdf">Matematicas aplicadas para
+                            arquitectura</a></p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/videos.png" alt="">
+                    <p><a target="_blank"
+                            href="https://youtube.com/playlist?list=PLpv6Rl2SgYAt3-ehIMnbOw1PMsvNOQ2I5&si=gqlbKMjfwyUELhrw">Playlist
+                            matematicas para arquitectura</a></p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Funciones para abrir y cerrar la ventana modal
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-        }
+        <div id="modal5" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal5')">&times;</span>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p class="hidden"><a target="_blank" href="../img/matematicasedificacion.pdf">Libro de matematicas
+                            en la edificacion (sistemas ambientales)</a></p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p class="hidden"><a target="_blank" href="../img/arquitecturasustentable.pdf">Libro de arquitectura
+                            ambientales</a></p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p class="hidden"><a target="_blank" href="../img/sistemasestructurales.pdf">Libro de sistemas
+                            estructurales</a></p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p class="hidden"><a target="_blank" href="../img/sistemasestructural.pdf">Libro de temas basicos de
+                            sistemas estructurales</a></p>
+                </div>
+                <div class="parrafo">
+                    <img class="icono" src="../img/pdf.png" alt="">
+                    <p class="hidden"><a target="_blank" href="../img/sistemasestructuraledificios.pdf">Libro de
+                            sistemas estructurales en construcciones</a></p>
+                </div>
+            </div>
+        </div>
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-        
-        // Cerrar la ventana modal al hacer clic fuera de ella
-        window.onclick = function (event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
+        <script>
+            // Funciones para abrir y cerrar la ventana modal
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = 'flex';
             }
-        }
-    </script>
+
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+
+            // Cerrar la ventana modal al hacer clic fuera de ella
+            window.onclick = function (event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            }
+        </script>
     </main>
 
 </body>
